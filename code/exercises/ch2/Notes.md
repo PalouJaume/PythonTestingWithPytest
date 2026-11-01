@@ -11,3 +11,9 @@ Some test start to fail.
 3. Are there any missing tests? Any functionality not covered? Add some test functions if there is something missing.
 
 If identical cards are checked as identical.
+
+4. Try the `-k` option to select a test.
+
+```
+pytest -vv test_card_mod.py -k "identical"
+``` 
