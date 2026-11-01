@@ -5,7 +5,7 @@ from dataclasses import field
 
 @dataclass
 class Card:
-    summary: str = None
+    summary: str = ""
     owner: str = None
     state: str = "todo"
     id: int = field(default=None, compare=False)
