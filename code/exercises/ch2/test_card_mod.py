@@ -2,13 +2,14 @@ from dataclasses import asdict
 from dataclasses import dataclass
 from dataclasses import field
 
+import pytest
 
 @dataclass
 class Card:
     summary: str = None
     owner: str = None
     state: str = "todo"
-    id: int = field(default=None, compare=True)
+    id: int = field(default=None, compare=False)
 
     @classmethod
     def from_dict(cls, d):
@@ -74,3 +75,21 @@ def test_to_dict():
         "id": 123,
     }
     assert c2 == c2_expected
+
+def assert_identical(c1: Card, c2: Card):
+    __tracebackhide__ = True
+    assert c1 == c2
+    if c1.id != c2.id:
+        pytest.fail(f"id's don't match. {c1.id} != {c2.id}")
+
+def test_identical():
+    c1 = Card("foo", id=123)
+    c2 = Card("foo", id=123)
+    assert_identical(c1, c2)
+
+def test_identical_fail():
+    with pytest.raises(pytest.fail.Exception):
+        c1 = Card("foo", id=123)
+        c2 = Card("foo", id=456)
+        assert_identical(c1, c2)
+    
