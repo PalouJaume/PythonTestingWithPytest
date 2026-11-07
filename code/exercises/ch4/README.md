@@ -17,6 +17,6 @@ if __name__ == "__main__":
 
 2. **(DONE)** Write a second test using fixtures that utilizes a temporary directory and `monkeypatch.chdir()`.
 
-3. **(-)** Add a print statement to see where the temporary directory is located. Manually check the `hello.txt` file after a test run. pytest leaves the temporary directories around for a while after test run to help with debugging.
+3. **(DONE)** Add a print statement to see where the temporary directory is located. Manually check the `hello.txt` file after a test run. pytest leaves the temporary directories around for a while after test run to help with debugging.
 
 4. **(-)** Comment out the calls to `hello()` in both tests and re-run. Do they both fail ? If not, why not?
