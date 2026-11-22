@@ -20,3 +20,20 @@ jobs:
         run: pip install tox
       - name: Run Tox
         run: cd code/ch11/cards_proj && tox -e py
+
+  exercise11:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.14"]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install Tox and any other packages
+        run: pip install tox
+      - name: Run Tox
+        run: cd code/exercises/ch11 && tox -e py  
